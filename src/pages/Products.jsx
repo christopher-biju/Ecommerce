@@ -12,7 +12,7 @@ export default function Products() {
           {/* card */}
 
           <Card >
-            <Card.Img style={{height:'250px'}} variant="top" src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSMBjX7sHVzDOwS9b0rgcsjOaXnRr8iwpTuZ7QvwjqPJnojB14tLxmPSB1NpQTVPPrh_pP8ZHIBzh9x_dNjHuGNdZju0UzZmriWD2mOYHVm5Y1w0-FPKVOgDrZWENHRhFpIUQd2oMUk&usqp=CAc" />
+            <Card.Img style={{height:'250px'}} variant="top" src="https://assets.myntassets.com/h_1440,q_75,w_1080/v1/assets/images/2026/APRIL/13/Gvy7LE4A_fd805ce141f84359806ba9ab1cb2c54b.jpg" />
             <Card.Body className='text-center'>
               <Card.Title>Card Title</Card.Title>
               <Link to={`/products/:id`} className='btn btn-warning'>View More</Link>
