@@ -3,7 +3,7 @@ import Products from './pages/Products'
 import Whishlist from './pages/Whishlist'
 import Cart from './pages/Cart'
 import View from './pages/View'
-import Pnf from './pages/Cart'
+import Pnf from './pages/Pnf'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
