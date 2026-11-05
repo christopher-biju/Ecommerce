@@ -31,9 +31,9 @@ export default function Cart() {
 
                 <td>
                   <div className="d-flex">
-                    <button style={{ height: '40px' }} className='btn fs-1'>-</button>
+                    <button style={{ height: '40px' }} className='btn fs-1 d-inline-flex align-items-center justify-content-center'>-</button>
                     <input style={{ width: '50px', height: '40px' }} type="text" value={10} className='form-control' readOnly />
-                    <button style={{ height: '40px' }} className='btn fs-1'>+</button>
+                    <button style={{ height: '40px' }} className='btn fs-1 d-inline-flex align-items-center justify-content-center'>+</button>
                   </div>
                 </td>
 
