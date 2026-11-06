@@ -1,6 +1,6 @@
 import './App.css'
 import Products from './pages/Products'
-import Whishlist from './pages/Whishlist'
+import Wishlist from './pages/Wishlist'
 import Cart from './pages/Cart'
 import View from './pages/View'
 import Pnf from './pages/Pnf'
@@ -15,7 +15,7 @@ function App() {
     <Header/>
       <Routes>
         <Route path='/' element={<Products />} />
-        <Route path='/whishlist' element={<Whishlist />} />
+        <Route path='/wishlist' element={<Wishlist />} />
         <Route path='/products/:id' element={<View />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/*' element={<Pnf />} />

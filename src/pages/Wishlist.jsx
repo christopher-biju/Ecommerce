@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 export default function Whishlist() {
   return (
     <div className='container mx-5'>
-      <h2 className='fw-bold text-info pt-4'>Whishlist</h2>
+      <h2 className='fw-bold text-info pt-4'>Wishlist</h2>
        <div className="row">
         {/* duplicate columns */}
         <div className="col-lg-3">
