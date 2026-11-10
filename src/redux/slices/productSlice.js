@@ -13,30 +13,38 @@ const productSlice = createSlice({
     initialState: {
         loading: true,
         allProducts: [],
+        dummyProducts: [],
         error: ""
     },
     reducers: {
         // define only synchornous func
+        searchProduct: (state, action) => {
+            state.allProducts = state.dummyProducts.filter(item => item.title.toLowerCase().includes(action.payload.toLowerCase()))
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(getAllProducts.fulfilled, (state, action) => {
             state.loading = false
             state.allProducts = action.payload
+            state.dummyProducts = action.payload
             state.error = ""
         })
 
         builder.addCase(getAllProducts.pending, (state, action) => {
             state.loading = true
             state.allProducts = []
+            state.dummyProducts = []
             state.error = ""
         })
 
         builder.addCase(getAllProducts.rejected, (state, action) => {
             state.loading = false
             state.allProducts = []
+            state.dummyProducts = []
             state.error = "API Call Failed"
         })
     }
 })
 
+export const { searchProduct } = productSlice.actions
 export default productSlice.reducer

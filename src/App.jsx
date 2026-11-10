@@ -4,7 +4,6 @@ import Wishlist from './pages/Wishlist'
 import Cart from './pages/Cart'
 import View from './pages/View'
 import Pnf from './pages/Pnf'
-import Header from './components/Header'
 import Footer from './components/Footer'
 
 import { Route, Routes } from 'react-router-dom'
@@ -12,7 +11,7 @@ import { Route, Routes } from 'react-router-dom'
 function App() {
   return (
     <>
-    <Header/>
+    
       <Routes>
         <Route path='/' element={<Products />} />
         <Route path='/wishlist' element={<Wishlist />} />
