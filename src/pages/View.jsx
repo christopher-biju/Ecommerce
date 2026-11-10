@@ -11,8 +11,8 @@ export default function View() {
   const { id } = useParams()
   console.log(id);
 
-  const { allproducts } = useSelector(state => state.productReducer)
-  console.log(allproducts);
+  const { allProducts } = useSelector(state => state.productReducer)
+  console.log(allProducts);
 
   return (
     <>
