@@ -7,15 +7,19 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWishlist } from '../redux/slices/wishlistSlice'
 import Swal from 'sweetalert2'
+import { addToCart } from '../redux/slices/cartSlice'
 
 
 export default function View() {
-const dispatch = useDispatch()
+
+  const dispatch = useDispatch()
 
   const { id } = useParams()
   const { allProducts } = useSelector(state => state.productReducer)
 
   const userWishlist = useSelector(state => state.wishlistReducer)
+
+  const userCart = useSelector(state => state.cartReducer)
 
   const [product, setproducts] = useState({})
   useEffect(() => {
@@ -23,21 +27,30 @@ const dispatch = useDispatch()
   }, [])
   console.log(id);
   console.log(userWishlist);
-  
 
   const handleWishlist = () => {
     const existingItem = userWishlist.find(item => item?.id == product?.id)
-    if (existingItem) {    
+    if (existingItem) {
       Swal.fire({
-        title:"Sorry",
-        text:'Product Alredy In Your Wishlist',
-        icon:"error",
-        confirmButtonText:"ok"
-      })      
+        title: "Sorry",
+        text: 'Product Alredy In Your Wishlist',
+        icon: "error",
+        confirmButtonText: "ok"
+      })
     }
     else {
       dispatch(addToWishlist(product))
     }
+  }
+
+  const handleCart = () => {
+    dispatch(addToCart(product))
+    Swal.fire({
+      title: "Good",
+      text: 'Product Add To Your Cart',
+      icon: "success",
+      confirmButtonText: "ok"
+    })
   }
 
   return (
@@ -52,7 +65,7 @@ const dispatch = useDispatch()
               alt="perfume" />
             <div className='d-flex justify-content-evenly mx-auto' style={{ maxWidth: '600px' }}>
               <Button onClick={handleWishlist} className='btn btn-info'>Add to wishlist</Button>
-              <Button className='btn btn-success'>Add to cart</Button>
+              <Button onClick={handleCart} className='btn btn-success'>Add to cart</Button>
             </div>
           </div>
           <div className="col-lg-6">

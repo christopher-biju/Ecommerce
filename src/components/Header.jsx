@@ -11,6 +11,7 @@ import { searchProduct } from '../redux/slices/productSlice';
 
 export default function Header({ insideproduct }) {
     const userWishlist = useSelector(state => state.wishlistReducer)
+    const userCart = useSelector(state => state.cartReducer)
   const dispatch = useDispatch()
   return (
     <div>
@@ -27,7 +28,7 @@ export default function Header({ insideproduct }) {
                 </Nav.Item>
               }
               <Link to={"/wishlist"} className='text-body text-decoration-none d-inline-flex align-items-center ms-5'><FontAwesomeIcon className='btn btn-danger me-1' icon={faHeart} /> <span className='fs-5 me-1'>Wishlist</span> <Badge bg="dark" >{userWishlist?.length}</Badge></Link>
-              <Link to={"/cart"} className='text-body text-decoration-none d-inline-flex align-items-center ms-5'><FontAwesomeIcon className='btn btn-success me-1' icon={faCartPlus} /> <span className='fs-5 me-1'>Cart</span> <Badge bg="dark" >10</Badge></Link>
+              <Link to={"/cart"} className='text-body text-decoration-none d-inline-flex align-items-center ms-5'><FontAwesomeIcon className='btn btn-success me-1' icon={faCartPlus} /> <span className='fs-5 me-1'>Cart</span> <Badge bg="dark" >{userCart?.length}</Badge></Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
