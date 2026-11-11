@@ -3,31 +3,81 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Header from '../components/Header'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { removeFromWishlist } from '../redux/slices/wishlistSlice';
 
 
 export default function Whishlist() {
+
+  const dispatch = useDispatch()
+
+  const userWishlist = useSelector(state => state.wishlistReducer)
+  console.log(userWishlist);
+
+
   return (
-   <>
-      <Header/>
+    <>
+      <Header />
       <div className='container mx-5'>
         <h2 className='fw-bold text-info pt-4'>Wishlist</h2>
-         <div className="row">
-          {/* duplicate columns */}
-          <div className="col-lg-3">
-            {/* card */}
-            <Card className='mt-3 mb-5' style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)' }}>
-              <Card.Img style={{ height: '250px' }} variant="top" src="https://assets.myntassets.com/h_1440,q_75,w_1080/v1/assets/images/2026/APRIL/13/Gvy7LE4A_fd805ce141f84359806ba9ab1cb2c54b.jpg" />
-              <Card.Body className='text-center'>
-                <Card.Title className='mb-3 text-center'>Card Title</Card.Title>
-                <div className="d-flex justify-content-evenly">
-                  <FontAwesomeIcon className='btn btn-danger me-1' icon={faHeartCircleXmark}/>
-                  <FontAwesomeIcon className='btn btn-success me-1' icon={faCartPlus}/>
+        <div className="row">
+          {
+            userWishlist.length > 0 ?
+
+              userWishlist.map(item => (
+                < div className="col-lg-3" >
+                  <Card Card className='mt-3 mb-5' style={{height:'380px', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)' }}>
+                    <Card.Img style={{ height: '250px' }} variant="top" src={item.thumbnail} />
+                    <Card.Body className='text-center'>
+                      <Card.Title className='mb-3 text-center'>{item.title}</Card.Title>
+                      <div className="d-flex justify-content-evenly">
+                        <button onClick={dispatch(removeFromWishlist(item.id))}  className='btn btn-danger me-1'><FontAwesomeIcon  icon={faHeartCircleXmark} /></button>
+                        <button className='btn btn-success me-1'><FontAwesomeIcon icon={faCartPlus} /></button>
+                      </div>
+                    </Card.Body>
+                  </Card>
                 </div>
-              </Card.Body>
-            </Card>
-          </div>
+              ))
+              :
+              <div className='d-flex justify-content-center align-items-center flex-column'>
+                <img src="" alt="no image" />
+                <h2>Your Wishlist Is Empty</h2>
+                <Link className='btn btn-primary'>Add More</Link>
+              </div>
+          }
+
+
+        </div >
+
+
+
+
+
+        <div className="row">
+
+
         </div>
-      </div>
-   </>
+
+
+      </div >
+    </>
   )
 }
+
+
+
+{/* duplicate columns */ }
+<div className="col-lg-3">
+  {/* card */}
+  <Card className='mt-3 mb-5' style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)' }}>
+    <Card.Img style={{ height: '250px' }} variant="top" src="https://assets.myntassets.com/h_1440,q_75,w_1080/v1/assets/images/2026/APRIL/13/Gvy7LE4A_fd805ce141f84359806ba9ab1cb2c54b.jpg" />
+    <Card.Body className='text-center'>
+      <Card.Title className='mb-3 text-center'>Card Title</Card.Title>
+      <div className="d-flex justify-content-evenly">
+        <FontAwesomeIcon className='btn btn-danger me-1' icon={faHeartCircleXmark} />
+        <FontAwesomeIcon className='btn btn-success me-1' icon={faCartPlus} />
+      </div>
+    </Card.Body>
+  </Card>
+</div>
