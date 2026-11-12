@@ -10,14 +10,10 @@ import { addToCart } from '../redux/slices/cartSlice';
 
 
 export default function Whishlist() {
-
   const dispatch = useDispatch()
-
   const userWishlist = useSelector(state => state.wishlistReducer)
   console.log(userWishlist);
-
   const userCart = useSelector(state => state.cartReducer)
-
   const handleCart = (product) => {
       dispatch(addToCart(product))
       dispatch(removeFromWishlist(product.id))
@@ -28,7 +24,6 @@ export default function Whishlist() {
         confirmButtonText: "ok"
       })
     }
-
   return (
     <>
       <Header />
@@ -53,9 +48,9 @@ export default function Whishlist() {
               ))
               :
               <div className='d-flex justify-content-center align-items-center flex-column'>
-                <img src="" alt="no image" />
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-7359557-6024626.png" alt="no image" />
                 <h2>Your Wishlist Is Empty</h2>
-                <Link to={'/'} className='btn btn-primary'>Add More</Link>
+                <Link to={'/'} className='btn btn-primary mb-5 mt-2'>Add More</Link>
               </div>
           }
         </div >

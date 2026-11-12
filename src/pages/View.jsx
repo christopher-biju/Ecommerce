@@ -11,16 +11,11 @@ import { addToCart } from '../redux/slices/cartSlice'
 
 
 export default function View() {
-
   const dispatch = useDispatch()
-
   const { id } = useParams()
   const { allProducts } = useSelector(state => state.productReducer)
-
   const userWishlist = useSelector(state => state.wishlistReducer)
-
   const userCart = useSelector(state => state.cartReducer)
-
   const [product, setproducts] = useState({})
   useEffect(() => {
     setproducts(allProducts.find(item => item.id == id))
@@ -42,7 +37,6 @@ export default function View() {
       dispatch(addToWishlist(product))
     }
   }
-
   const handleCart = () => {
     dispatch(addToCart(product))
     Swal.fire({
@@ -52,7 +46,6 @@ export default function View() {
       confirmButtonText: "ok"
     })
   }
-
   return (
     <>
       <Header />
@@ -75,7 +68,6 @@ export default function View() {
             <h3 className='fw-bold my-3'>Category : <span className='fs-4'>{product?.category}</span></h3>
             <h3 className='fw-bold mb-3'>Discription : <span className='fs-5'>{product?.description}</span></h3>
             <h4 className='fw-bold '>Client Reviews :</h4>
-
             {
               product?.reviews?.map((item, index) => (
                 <div key={index} className='border rounded p-2 shadow mt-3 mb-4'>
@@ -84,7 +76,6 @@ export default function View() {
                 </div>
               ))
             }
-
           </div>
         </div>
       </div>

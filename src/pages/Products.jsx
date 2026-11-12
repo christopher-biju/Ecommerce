@@ -9,31 +9,24 @@ import { faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Products() {
-
   const { loading, allProducts, error } = useSelector(state => state.productReducer)
   console.log(allProducts);
-
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllProducts())
   }, [])
-
   const [currentPage, setcurrentPage] = useState(1)
   const totalproductPerPage = 8
   const totalPages = Math.ceil(allProducts?.length / totalproductPerPage)
   const currentPageLastIndex = currentPage * totalproductPerPage
   const currentPageStartIndex = currentPageLastIndex - totalproductPerPage
   const visibleProducts = allProducts.slice(currentPageStartIndex, currentPageLastIndex)
-
   const nextPage = () => {
     currentPage != totalPages && setcurrentPage(currentPage + 1)
   }
-
   const prevPage = () => {
     currentPage != 1 && setcurrentPage(currentPage - 1)
   }
-
-
   return (
     <>
       <Header insideproduct />
